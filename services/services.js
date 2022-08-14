@@ -24,17 +24,8 @@ const getServicesFromStationToStation = async (originCRS, destCRS) => {
 
 const getServiceByUid = async (serviceUid, serviceDate) => {
     const url = `${baseUrl}/service/${serviceUid}/${serviceDate}`
-    console.log(url)
     const response = await axios.get(url, config)
     return response.data   
 }
 
-const getLocationDetailByCRS = async (serviceUid, serviceDate, origin) => {
-    const url = `${baseUrl}/service/${serviceUid}/${serviceDate}`
-    console.log(url)
-    const response = await axios.get(url, config)
-    console.log(response.data.locations[2].origin[0].description)
-    return response.data.locations[2].origin[0].description
-}
-
-export {getServicesFromStation, getServicesFromStationToStation, getServiceByUid, getLocationDetailByCRS}
+export {getServicesFromStation, getServicesFromStationToStation, getServiceByUid}

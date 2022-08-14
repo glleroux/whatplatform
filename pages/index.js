@@ -1,8 +1,9 @@
 import { useRouter } from 'next/router';
 import { Button } from '../components/button'
 import { Input } from '../components/input'
+import Layout from '../components/layout';
 import { useState } from 'react'
-import getCrsFromStation from '../utils/getCrsCode'
+import {getCrsFromStation} from '../utils/getStationInfo'
 import getSearchResults from '../utils/getSearchResults';
 
 export default function Home() {
@@ -25,7 +26,6 @@ export default function Home() {
   const router = useRouter()
 
   const handleSearch = () => {
-
     const originCRS = getCrsFromStation(originStation)
 
     if (!destStation) {
@@ -34,16 +34,26 @@ export default function Home() {
       const destCRS = getCrsFromStation(destStation)
       router.push(`/${originCRS}/${destCRS}`)
     }
-
   }
 
+  const layoutProps = {
+    origin: {
+      crs: '',
+      name: ''
+    },
+    destination: {
+      crs: '',
+      name: ''
+    }
+}
+
   return (
-    <>
-      <Input id='origin' placeholder='Where are you now?' onChange={handleChange}/>
-      <Input id='dest' placeholder='Where are you headed? (optional)' onChange={handleChange}/>
-      <Button label={'Find departures'} handleClick={handleSearch}/>  
+    <Layout stationInfo={layoutProps}>
+        <Input id='origin' placeholder='Where are you now?' onChange={handleChange}/>
+        <Input id='dest' placeholder='Where are you headed? (optional)' onChange={handleChange}/>
+        <Button label={'Find departures'} handleClick={handleSearch}/>  
       {
-      searchResults.map(result => <p>{result.item.name}</p>)
+      // searchResults.map(result => <p key={result.item.crscode}>{result.item.name}</p>)
       }
-    </>
+    </Layout>
 )}

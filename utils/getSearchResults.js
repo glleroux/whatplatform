@@ -8,7 +8,6 @@ const options = {
 
 const getSearchResults = (query) => {
     const fuse = new Fuse(stations, options)
-    console.log(fuse.search(query))
     return fuse.search(query)
 }
 

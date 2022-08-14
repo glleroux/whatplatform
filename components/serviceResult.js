@@ -31,21 +31,21 @@ const Operator = styled.p`
 
 const ServiceResult = ({ service, origin }) => {
 
+    const runDate = service.runDate
     const departureTime = service.locationDetail.gbttBookedDeparture
     const destination = service.locationDetail.destination[0].description
     const operator = service.atocName
 
     const router = useRouter()
 
-    console.log(origin)
-
     const handleSelect = () => {
-        router.replace({
+        router.push({
             pathname: `/service/${service.serviceUid}`,
             query: {
-                origin
+                origin,
+                runDate
             }
-        })
+        }, `/service/${service.serviceUid}`)
     }
 
     

@@ -1,14 +1,42 @@
+import styled from 'styled-components';
 import ServiceResult from '../../components/serviceResult'
-import {getServicesFromStation} from '../../services/services'
+import NoServiceText from '../../components/noServiceText';
+import { Button } from '../../components/button';
 import { useRouter } from 'next/router';
+import Layout from '../../components/layout';
+import { getLayoutProps, getStationFromCRS } from '../../utils/getStationInfo';
+import { getServicesFromStation } from '../../services/services';
+
+const ServicesContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+`
 
 const OriginStation = ({ services }) => {
 
-  const { asPath } = useRouter()
-  const originCRS = asPath.substring(1)
+  const router = useRouter()
+  const pagePath = router.asPath
+
+  const originCRS = pagePath.substring(1,4)
+  const originName = getStationFromCRS(originCRS)
+  const layoutProps = getLayoutProps(originCRS, originName)
 
   return (
-      services.map(service => <ServiceResult service={service} key={service.serviceUid} origin={originCRS}/>)
+    <Layout stationInfo={layoutProps}>
+      {
+        services 
+        ? 
+        <ServicesContainer>
+          {services.map(service => <ServiceResult service={service} key={service.serviceUid} origin={originCRS}/>)}
+        </ServicesContainer>
+        : 
+        <>
+          <NoServiceText/>
+          <Button label='Search again' handleClick={() => router.push('/')}/>
+        </>
+      }
+    </Layout>
   )
 
 }
