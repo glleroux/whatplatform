@@ -9,7 +9,6 @@ const StyledInput = styled.input`
     border-radius: 14px;
     padding: 16px 24px;
     width: 100%;
-    max-width: 350px;
     margin-top: 16px;
     &::-webkit-input-placeholder {
         color: #28282866;

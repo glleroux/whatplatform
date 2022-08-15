@@ -15,8 +15,8 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     margin-bottom: 80px;
-    max-width: 350px;
-    align-self: stretch;
+    width: calc(100vw + -56px);
+    max-width: 600px;
 `
     
 const Title = styled.h1`
@@ -42,10 +42,10 @@ const Header = ({ stationInfo }) => {
 
     return (
         <Container>
-            <TitleNavContainer>
+            <TitleNavContainer pagePath={pagePath}>
                 {
                     pagePath === '/' 
-                        ? <Title>what platform?</Title>
+                        ? <Title pagePath={pagePath}>what platform?</Title>
                         : <>
                         <Image 
                             alt='back' 

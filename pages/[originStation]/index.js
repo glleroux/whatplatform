@@ -10,7 +10,8 @@ import { getServicesFromStation } from '../../services/services';
 const ServicesContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width: 350px;
+    width: 100%;
+    max-width: 600px;
 `
 
 const OriginStation = ({ services }) => {

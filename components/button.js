@@ -9,7 +9,6 @@ const StyledButton = styled.button`
     border-radius: 14px;
     padding: 16px 64px;
     width: 100%;
-    max-width: 350px;
     margin-top: 32px;
     &:hover {
         background-color: #282828E6;

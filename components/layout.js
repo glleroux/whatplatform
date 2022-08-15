@@ -5,12 +5,19 @@ const Layout = ({ children, stationInfo }) => {
     const layoutStyle = {
         display: "flex",
         flexDirection: "column",
+        alignItems: 'center',
+        margin: '28px',
+        height: 'calc(100vh + -56px)',
     }
 
     const contentStyle = {
         flex: 1,
         display: "flex",
-        flexDirection: "column"
+        flexDirection: "column",
+        alignItems: "center",
+        overflow: "auto",
+        width: "calc(100vw + -56px)",
+        maxWidth: '600px'
     };    
 
     return (
