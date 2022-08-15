@@ -8,6 +8,7 @@ const Layout = ({ children, stationInfo }) => {
         alignItems: 'center',
         margin: '28px',
         height: 'calc(100vh + -56px)',
+
     }
 
     const contentStyle = {
@@ -16,7 +17,7 @@ const Layout = ({ children, stationInfo }) => {
         flexDirection: "column",
         alignItems: "center",
         overflow: "auto",
-        width: "calc(100vw + -56px)",
+        width: "100%",
         maxWidth: '600px'
     };    
 

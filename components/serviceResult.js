@@ -7,6 +7,9 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     margin-top: 8px;
+    &:hover {
+        background-color: #F9F9F9;
+    }
 `
 
 const DepartureTime = styled.p`
