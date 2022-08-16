@@ -4,6 +4,7 @@ const Text = styled.p`
     color: #282828; 
     font-size: 18px;
     font-weight: 400;
+    line-height: 150%;
 `
 
 const containerStyle = {
