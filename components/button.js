@@ -9,7 +9,7 @@ const StyledButton = styled.button`
     border-radius: 14px;
     padding: 16px 64px;
     width: 100%;
-    margin-top: 32px;
+    margin-top: 56px;
     &:hover {
         background-color: #282828E6;
     }
