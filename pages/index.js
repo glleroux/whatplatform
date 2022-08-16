@@ -1,27 +1,15 @@
 import { useRouter } from 'next/router';
 import { Button } from '../components/button'
 import { Input } from '../components/input'
+import SearchModal from '../components/searchModal';
 import Layout from '../components/layout';
 import { useState } from 'react'
 import {getCrsFromStation} from '../utils/getStationInfo'
-import getSearchResults from '../utils/getSearchResults';
 
 export default function Home() {
 
-  const [searchResults, setSearchResults] = useState([])
-  const [originStation, setOriginStation] = useState('')
-  const [destStation, setDestStation] = useState('')
-
-  const handleChange = ({target}) => {
-    if (target.id === 'origin') {
-      setOriginStation(target.value)
-      const newSearchResults = getSearchResults(target.value)
-      setSearchResults([].concat(newSearchResults))
-    }
-    if (target.id === 'dest') {
-      setDestStation(target.value)
-    }
-  }
+  const [searchVisible, setSearchVisible] = useState(false)
+  const [selectedStations, setSelectedStations] = useState({origin: '', dest: ''})
 
   const router = useRouter()
 
@@ -48,12 +36,18 @@ export default function Home() {
 }
 
   return (
-    <Layout stationInfo={layoutProps}>
-        <Input id='origin' placeholder='Where are you now?' onChange={handleChange}/>
-        <Input id='dest' placeholder='Where are you headed? (optional)' onChange={handleChange}/>
-        <Button label={'Find departures'} handleClick={handleSearch}/>  
-      {
-      // searchResults.map(result => <p key={result.item.crscode}>{result.item.name}</p>)
-      }
-    </Layout>
+      searchVisible 
+      ? <SearchModal searchVisible={searchVisible} setSearchVisible={setSearchVisible} setSelectedStations={setSelectedStations}/>
+      : <>
+          <Layout stationInfo={layoutProps}>
+            <Input id='origin' placeholder='Where are you now?' onClick={()=> setSearchVisible({value: true, name: 'origin'})}/>
+            <Input id='dest' placeholder='Where are you headed? (optional)' onClick={()=> setSearchVisible({value: true, name: 'dest'})}/>
+            <Button label={'Find departures'} handleClick={handleSearch}/>  
+          {
+          // searchResults.map(result => <p key={result.item.crscode}>{result.item.name}</p>)
+          }
+        </Layout>
+      </>
+
+    
 )}

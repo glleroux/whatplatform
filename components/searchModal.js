@@ -18,7 +18,7 @@ const Cancel = styled.p`
     margin-left: auto;
 `
 
-const SearchModal = ({ searchSelected, setSearchSelected }) => {
+const SearchModal = ({ setSearchVisible  }) => {
 
     const cancelContainerStyle = {
         display: "flex",
@@ -40,10 +40,8 @@ const SearchModal = ({ searchSelected, setSearchSelected }) => {
     }
 
     const [searchResults, setSearchResults] = useState([])
-    const [searchQuery, setSearchQuery] = useState('')
 
     const handleChange = ({target}) => {  
-        setSearchQuery(target.value)
         const newSearchResults = getSearchResults(target.value)
         console.log(newSearchResults)
         setSearchResults([].concat(newSearchResults))
@@ -52,12 +50,12 @@ const SearchModal = ({ searchSelected, setSearchSelected }) => {
     return (
         <Modal>
             <div style={cancelContainerStyle}>
-                <Cancel onClick={() => setSearchSelected(false)}>Cancel</Cancel>
+                <Cancel onClick={() => setSearchVisible(false)}>Cancel</Cancel>
             </div>
             <Input style={searchModalInputStyle} onChange={handleChange}/>
             <div style={resultsContainerStyle}>
                 {
-                    searchResults.map(result => <SearchResult name={result.item.name} key={result.refIndex}/>)
+                    searchResults.map(result => <SearchResult name={result.item.name} crs={result.item.crscode} key={result.refIndex}/>)
                 }
             </div>
                 
