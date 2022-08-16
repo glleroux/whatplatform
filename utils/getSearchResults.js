@@ -13,4 +13,26 @@ const getSearchResults = (query) => {
     return results.slice(0,12)
 }
 
-export default getSearchResults
+const getPopularStations = () => {
+
+    const popularStationNames = [
+        'London Euston',
+        'London Paddington',
+        'Birmingham New Street',
+        'Leeds',
+        'Manchester Piccadilly',
+        'Edinburgh (Waverley)',
+        'Sheffield',
+        'Newcastle',
+        'London Kings Cross',
+        'London Liverpool Street'
+    ]
+
+    return stations.filter(station => popularStationNames.includes(station.name))
+}
+
+const getRecentStations = () => {
+    return
+}
+
+export {getSearchResults, getPopularStations, getRecentStations}

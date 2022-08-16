@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { useState } from "react";
-import getSearchResults from "../utils/getSearchResults";
+import {getSearchResults, getPopularStations} from "../utils/getSearchResults";
 import { Input } from "./input";
+import SearchGroups from "./searchGroups";
 import SearchResult from "./searchResult";
 
 const Modal = styled.div`
@@ -37,16 +38,15 @@ const SearchModal = ({ searchVisible, setSearchVisible, handleSelection  }) => {
         marginTop: "16px",
         flex: 1,
         overflow: 'auto'
-
     }
 
     const [searchResults, setSearchResults] = useState([])
 
     const placeholderText = `${searchVisible.input === 'origin' ? 'From' : 'To'} station`
+    const popularStations = getPopularStations()
 
     const handleChange = ({target}) => {  
         const newSearchResults = getSearchResults(target.value)
-        console.log(newSearchResults)
         setSearchResults([].concat(newSearchResults))
     }
 
@@ -58,8 +58,12 @@ const SearchModal = ({ searchVisible, setSearchVisible, handleSelection  }) => {
             <Input placeholder={placeholderText} style={searchModalInputStyle} onChange={handleChange}/>
             <div style={resultsContainerStyle}>
                 {
+                    searchResults.length
+                    ?
                     searchResults.map(result => <SearchResult name={result.item.name} crs={result.item.crscode} handleClick={handleSelection} key={result.refIndex}/>)
-                }
+                    :
+                    <SearchGroups handleClick={handleSelection}/> 
+                } 
             </div>
                 
         </Modal>
