@@ -15,11 +15,16 @@ const StyledInput = styled.input`
     }
 `
 
-export const Input = ({ id, placeholder, onChange, onClick, style }) => 
+export const Input = ({ id, placeholder, onChange, onClick, value, style, readOnly }) => 
     <StyledInput 
         placeholder={placeholder} 
         id={id} 
         onChange={onChange}
         onClick={onClick}
+        value={value}
         style={style}
+        readOnly={readOnly}
+        autoFocus
     />
+        
+    

@@ -9,17 +9,31 @@ import {getCrsFromStation} from '../utils/getStationInfo'
 export default function Home() {
 
   const [searchVisible, setSearchVisible] = useState(false)
-  const [selectedStations, setSelectedStations] = useState({origin: '', dest: ''})
+  const [selectedStations, setSelectedStations] = useState({
+    origin: {name: '', crsCode: ''}, 
+    dest: {name: '', crsCode: ''}
+  })
 
   const router = useRouter()
 
-  const handleSearch = () => {
-    const originCRS = getCrsFromStation(originStation)
+  const handleSelection = ({ target }) => {
+    const name = target.dataset.stationname
+    const crsCode = target.dataset.crscode
 
-    if (!destStation) {
+    setSelectedStations({...selectedStations, [searchVisible.input]: {
+      name,
+      crsCode
+    }})
+    setSearchVisible(false)
+  }
+
+  const handleSearch = () => {
+    const originCRS = selectedStations.origin.crsCode
+
+    if (!selectedStations.dest) {
       router.push(`/${originCRS}`)
     } else {
-      const destCRS = getCrsFromStation(destStation)
+      const destCRS = selectedStations.dest.crsCode
       router.push(`/${originCRS}/${destCRS}`)
     }
   }
@@ -37,11 +51,11 @@ export default function Home() {
 
   return (
       searchVisible 
-      ? <SearchModal searchVisible={searchVisible} setSearchVisible={setSearchVisible} setSelectedStations={setSelectedStations}/>
+      ? <SearchModal setSearchVisible={setSearchVisible} handleSelection={handleSelection}/>
       : <>
           <Layout stationInfo={layoutProps}>
-            <Input id='origin' placeholder='Where are you now?' onClick={()=> setSearchVisible({value: true, name: 'origin'})}/>
-            <Input id='dest' placeholder='Where are you headed? (optional)' onClick={()=> setSearchVisible({value: true, name: 'dest'})}/>
+            <Input id='origin' placeholder='Where are you now?' onClick={()=> setSearchVisible({value: true, input: 'origin'})} value={selectedStations.origin.name} readOnly={true}/>
+            <Input id='dest' placeholder='Where are you headed? (optional)' onClick={()=> setSearchVisible({value: true, input: 'dest'})} value={selectedStations.dest.name} readOnly={true}/>
             <Button label={'Find departures'} handleClick={handleSearch}/>  
           {
           // searchResults.map(result => <p key={result.item.crscode}>{result.item.name}</p>)

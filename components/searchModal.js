@@ -18,7 +18,7 @@ const Cancel = styled.p`
     margin-left: auto;
 `
 
-const SearchModal = ({ setSearchVisible  }) => {
+const SearchModal = ({ setSearchVisible, handleSelection  }) => {
 
     const cancelContainerStyle = {
         display: "flex",
@@ -55,7 +55,7 @@ const SearchModal = ({ setSearchVisible  }) => {
             <Input style={searchModalInputStyle} onChange={handleChange}/>
             <div style={resultsContainerStyle}>
                 {
-                    searchResults.map(result => <SearchResult name={result.item.name} crs={result.item.crscode} key={result.refIndex}/>)
+                    searchResults.map(result => <SearchResult name={result.item.name} crs={result.item.crscode} handleClick={handleSelection} key={result.refIndex}/>)
                 }
             </div>
                 

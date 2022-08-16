@@ -15,19 +15,21 @@ const Station = styled.p`
     color: #282828; 
     font-size: 16px;
     font-weight: 600;
+    pointer-events: none
 `
 
 const CRS = styled.p`
     color: #28282866;
     font-size: 14px;
     font-weight: 600;
+    pointer-events: none
 
 `
 
-const SearchResult = ({ name, crs }) => {
+const SearchResult = ({ name, crs, handleClick }) => {
     
     return (
-        <Container> 
+        <Container data-crscode={crs} data-stationname={name} onClick={handleClick}> 
             <Station>{name}</Station>
             <CRS>{crs}</CRS>
         </Container>
