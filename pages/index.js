@@ -4,7 +4,7 @@ import { Input } from '../components/input'
 import SearchModal from '../components/searchModal';
 import Layout from '../components/layout';
 import { useState } from 'react'
-import {getCrsFromStation} from '../utils/getStationInfo'
+import { setToStorage } from '../utils/localStorage';
 
 export default function Home() {
 
@@ -36,6 +36,8 @@ export default function Home() {
       const destCRS = selectedStations.dest.crsCode
       router.push(`/${originCRS}/${destCRS}`)
     }
+
+    // setToStorage(selectedStations) todo
   }
 
   return (
