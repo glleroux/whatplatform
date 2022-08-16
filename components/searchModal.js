@@ -29,7 +29,8 @@ const SearchModal = ({ setSearchVisible, handleSelection  }) => {
     const searchModalInputStyle = {
         border: "1px solid #28282866",
         borderRadius: '4px',
-        padding: '16px'
+        padding: '16px',
+        marginBottom: '16px'
     }
 
     const resultsContainerStyle = {
