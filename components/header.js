@@ -101,7 +101,7 @@ const Graphic = () => {
 
     const graphicContainerStyle = {
         'display': 'flex',
-        'marginBottom': '32px'
+        'marginBottom': '16px'
     }
 
     return (
