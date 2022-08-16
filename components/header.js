@@ -25,6 +25,7 @@ const Title = styled.h1`
     font-size: 32px;
     margin: 0;
     text-align: center;
+    letter-spacing: -2px;
 `
 
 const TitleNavContainer = styled.div`
@@ -54,7 +55,7 @@ const Header = ({ stationInfo }) => {
                             width={32} 
                             style={iconStyle}
                             onClick={() => router.back()}
-                        />
+                        />  
                         <Title onClick={() => router.push('/')}>what platform?</Title>  
                         </>
                 }
@@ -80,7 +81,7 @@ const StationDisplay = ({ stationInfo }) => {
         <Graphic/>
         <div style={stationInfoContainerStyle}>
             <StationInfo stationInfo={stationInfo.origin}/>
-            <StationInfo stationInfo={stationInfo.destination} isDesination={true}/>
+            <StationInfo stationInfo={stationInfo.dest} isDesination={true}/>
         </div>
         </>
     )
@@ -136,7 +137,7 @@ const StationInfo = ({ isDesination, stationInfo }) => {
 
     return (
         <div style={isDesination ? destinationStyle : {}}>
-            <StationCRS>{stationInfo.crs}</StationCRS>
+            <StationCRS>{stationInfo.crsCode}</StationCRS>
             <StationName>{stationInfo.name}</StationName>
         </div>
     )

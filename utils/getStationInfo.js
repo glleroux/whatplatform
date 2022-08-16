@@ -13,11 +13,11 @@ const getStationFromCRS = (stationCRS) => {
 const getLayoutProps = (originCRS, originName, destCRS='ALL', destName='All Services') => {
     return {
         origin: {
-          crs: originCRS,
+          crsCode: originCRS,
           name: originName
         },
-        destination: {
-          crs: destCRS,
+        dest: {
+          crsCode: destCRS,
           name: destName
         }
     }

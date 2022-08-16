@@ -38,22 +38,11 @@ export default function Home() {
     }
   }
 
-  const layoutProps = {
-    origin: {
-      crs: '',
-      name: ''
-    },
-    destination: {
-      crs: '',
-      name: ''
-    }
-}
-
   return (
       searchVisible 
       ? <SearchModal setSearchVisible={setSearchVisible} handleSelection={handleSelection}/>
       : <>
-          <Layout stationInfo={layoutProps}>
+          <Layout stationInfo={selectedStations}>
             <Input id='origin' placeholder='Where are you now?' onClick={()=> setSearchVisible({value: true, input: 'origin'})} value={selectedStations.origin.name} readOnly={true}/>
             <Input id='dest' placeholder='Where are you headed? (optional)' onClick={()=> setSearchVisible({value: true, input: 'dest'})} value={selectedStations.dest.name} readOnly={true}/>
             <Button label={'Find departures'} handleClick={handleSearch}/>  
