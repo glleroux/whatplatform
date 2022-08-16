@@ -18,7 +18,7 @@ const Cancel = styled.p`
     margin-left: auto;
 `
 
-const SearchModal = ({ setSearchVisible, handleSelection  }) => {
+const SearchModal = ({ searchVisible, setSearchVisible, handleSelection  }) => {
 
     const cancelContainerStyle = {
         display: "flex",
@@ -27,7 +27,7 @@ const SearchModal = ({ setSearchVisible, handleSelection  }) => {
     }
 
     const searchModalInputStyle = {
-        border: "1px solid #28282866",
+        border: "2px solid #28282866",
         borderRadius: '4px',
         padding: '16px',
         marginBottom: '16px'
@@ -42,6 +42,8 @@ const SearchModal = ({ setSearchVisible, handleSelection  }) => {
 
     const [searchResults, setSearchResults] = useState([])
 
+    const placeholderText = `${searchVisible.input === 'origin' ? 'From' : 'To'} station`
+
     const handleChange = ({target}) => {  
         const newSearchResults = getSearchResults(target.value)
         console.log(newSearchResults)
@@ -51,9 +53,9 @@ const SearchModal = ({ setSearchVisible, handleSelection  }) => {
     return (
         <Modal>
             <div style={cancelContainerStyle}>
-                <Cancel onClick={() => setSearchVisible(false)}>Cancel</Cancel>
+                <Cancel onClick={() => setSearchVisible({value: false, input: null})}>Cancel</Cancel>
             </div>
-            <Input style={searchModalInputStyle} onChange={handleChange}/>
+            <Input placeholder={placeholderText} style={searchModalInputStyle} onChange={handleChange}/>
             <div style={resultsContainerStyle}>
                 {
                     searchResults.map(result => <SearchResult name={result.item.name} crs={result.item.crscode} handleClick={handleSelection} key={result.refIndex}/>)

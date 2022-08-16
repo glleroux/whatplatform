@@ -8,7 +8,7 @@ import {getCrsFromStation} from '../utils/getStationInfo'
 
 export default function Home() {
 
-  const [searchVisible, setSearchVisible] = useState(false)
+  const [searchVisible, setSearchVisible] = useState({value: false, input: null})
   const [selectedStations, setSelectedStations] = useState({
     origin: {name: '', crsCode: ''}, 
     dest: {name: '', crsCode: ''}
@@ -24,7 +24,7 @@ export default function Home() {
       name,
       crsCode
     }})
-    setSearchVisible(false)
+    setSearchVisible({value: false, input: null})
   }
 
   const handleSearch = () => {
@@ -39,8 +39,8 @@ export default function Home() {
   }
 
   return (
-      searchVisible 
-      ? <SearchModal setSearchVisible={setSearchVisible} handleSelection={handleSelection}/>
+      searchVisible.value 
+      ? <SearchModal searchVisible={searchVisible} setSearchVisible={setSearchVisible} handleSelection={handleSelection}/>
       : <>
           <Layout stationInfo={selectedStations}>
             <Input id='origin' placeholder='Where are you now?' onClick={()=> setSearchVisible({value: true, input: 'origin'})} value={selectedStations.origin.name} readOnly={true}/>
