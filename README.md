@@ -12,7 +12,7 @@ On the occasion 👨🏻‍🎓
 
 - Next.JS
 - HTML
-- CSS
+- CSS / styled components
 - Vercel
 
 ### API integrations
