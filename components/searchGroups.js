@@ -4,7 +4,7 @@ import { getPopularStations, getRecentStations } from "../utils/getSearchResults
 
 const GroupSearchesContainer = styled.div`
     background-color: #FFFFFF;
-    padding: 18px 16px;
+    padding: 16px 14px;
     display: flex;
     align-items: center;
     justify-content: space-between;
