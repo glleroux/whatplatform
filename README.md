@@ -1,34 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# What Platform?
 
-## Getting Started
+## Introduction
 
-First, run the development server:
+Getting a commuter train out of central London at rush hour inevitably involves a mass rush to the platform once your platform number is announced on the departure boards — and a lottery on whether you will get a seat. I recently discovered that departure platforms are known far in advance and that this data is publicly available[^1]. The interface is lacking so I wanted to build a fast and intuitive service for finding the platform that your train will depart from. 
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Motivation
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+On the occasion 👨🏻‍🎓
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Technology Used
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- Next.JS
+- HTML
+- CSS
+- Vercel
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### API integrations
 
-## Learn More
+- 🖋 [Google Fonts](https://developers.google.com/fonts/docs/developer_api) — for supplying design options.
+- ☁ [Cloudinary](https://cloudinary.com/documentation/javascript_integration) - for image upload and retrieval.
+- 📍 [Google Places Autocomplete](https://developers.google.com/maps/documentation/javascript/places-autocomplete) — for resolving standardised, global postal addresses.
+- 💳 [React Stripe.js](https://stripe.com/docs/stripe-js/react) — for collecting online payments.
+- 👕 [Inkthreadable](https://www.inkthreadable.co.uk/api-documentation) — for order fulfillment.
 
-To learn more about Next.js, take a look at the following resources:
+## New things uncovered...
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### HTML Canvas / [node-canvas](https://www.npmjs.com/package/canvas)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Implemented after needing to find a way to turn the user-selected typeface into an image meeting requirements specified by Inkthreadable.
 
-## Deploy on Vercel
+#### `await Promise.all`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Implemented after needing to filter an array using an async function. [(link)](https://advancedweb.hu/how-to-use-async-functions-with-array-filter-in-javascript/)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Learnings for next time!
+
+#### Use CSS-in-JS
+
+CSS file became huge and difficult to work with. Next project should include [styled-components](https://styled-components.com/) or similar.
+
+#### Write tests
+
+Testing the UI (order selection) and testing the API (order creation) became onorous — even using [Postman](https://www.postman.com/). Next project should have tests, using [Jest](https://jestjs.io/) or similar.
+
+[^1]: Courtesy of Realtime Trains (https://www.realtimetrains.co.uk/).
