@@ -60,7 +60,9 @@ const Header = ({ stationInfo }) => {
                         </>
                 }
             </TitleNavContainer>
-            <StationDisplay stationInfo={stationInfo}/>
+            {
+                pagePath !== '/about' && <StationDisplay stationInfo={stationInfo}/>
+            }
         </Container>
 
     )

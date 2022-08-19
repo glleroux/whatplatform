@@ -1,3 +1,4 @@
+import Footer from './footer';
 import Header from './header'
 
 const Layout = ({ children, stationInfo }) => {
@@ -29,6 +30,7 @@ const Layout = ({ children, stationInfo }) => {
             <div className="Content" style={contentStyle}>
                 {children}
             </div>
+            <Footer/>
         </div>
     )
 
