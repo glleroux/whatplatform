@@ -29,10 +29,17 @@ const SearchGroups = ({ handleClick }) => {
 
     return (
         <>
-            <GroupSearchesContainer recent>
-                <GroupText>Recent Stations</GroupText>
-            </GroupSearchesContainer>
-
+            {
+                recentStations && 
+                <>
+                    <GroupSearchesContainer recent>
+                        <GroupText>Recent Stations</GroupText>
+                    </GroupSearchesContainer>
+                    <div style={resultsContainerStyle}>
+                        {recentStations.map(station => <SearchResult key={station.crscode} name={station.name} crs={station.crscode} handleClick={handleClick}/>)}
+                    </div>
+                </>
+            }
             <GroupSearchesContainer>
                 <GroupText>Popular Stations</GroupText>
             </GroupSearchesContainer>

@@ -36,8 +36,8 @@ export default function Home() {
       const destCRS = selectedStations.dest.crsCode
       router.push(`/${originCRS}/${destCRS}`)
     }
-
-    // setToStorage(selectedStations) todo
+    console.log('searching: ', selectedStations)
+    setToStorage(selectedStations) 
   }
 
   return (

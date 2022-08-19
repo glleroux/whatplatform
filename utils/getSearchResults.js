@@ -1,5 +1,6 @@
 import stations from '../stations'
 import Fuse from 'fuse.js'
+import { getFromStorage } from './localStorage'
 
 const options = {
     includeScore: true,
@@ -32,7 +33,15 @@ const getPopularStations = () => {
 }
 
 const getRecentStations = () => {
-    return
+    const frequentStations = getFromStorage('frequentStations')
+    if (!frequentStations) {
+        return null
+    }
+    const withCRS = frequentStations.map((frequentStation) => {
+        const crscode = stations.find(station => station.name === frequentStation.name).crscode
+        return {...frequentStation, crscode} 
+    })
+    return withCRS.sort((a,b) => b.count - a.count)
 }
 
 export {getSearchResults, getPopularStations, getRecentStations}

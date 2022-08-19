@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
-import {getSearchResults, getPopularStations} from "../utils/getSearchResults";
+import {getSearchResults, getPopularStations, getRecentStations} from "../utils/getSearchResults";
 import { Input } from "./input";
 import SearchGroups from "./searchGroups";
 import SearchResult from "./searchResult";
@@ -43,7 +43,6 @@ const SearchModal = ({ searchVisible, setSearchVisible, handleSelection  }) => {
     const [searchResults, setSearchResults] = useState([])
 
     const placeholderText = `${searchVisible.input === 'origin' ? 'From' : 'To'} station`
-    const popularStations = getPopularStations()
 
     const handleChange = ({target}) => {  
         const newSearchResults = getSearchResults(target.value)
