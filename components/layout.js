@@ -24,7 +24,7 @@ const Layout = ({ children, stationInfo }) => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        overflow: (props) => props.isService ? "none" : "auto",
+        overflow: "auto",
         width: "100%",
         maxWidth: '600px'
     };    
