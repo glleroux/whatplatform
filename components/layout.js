@@ -1,7 +1,14 @@
 import Footer from './footer';
 import Header from './header'
+import { useRouter } from "next/router";
 
 const Layout = ({ children, stationInfo }) => {
+
+    const router = useRouter()
+    const pagePath = router.asPath
+    const isService = pagePath.includes('service')
+
+    console.log(pagePath)
 
     const layoutStyle = {
         display: "flex",
@@ -17,13 +24,13 @@ const Layout = ({ children, stationInfo }) => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        overflow: "auto",
+        overflow: (props) => props.isService ? "none" : "auto",
         width: "100%",
         maxWidth: '600px'
     };    
 
     return (
-        <div className="Layout" style={layoutStyle}>
+        <div className="Layout" style={layoutStyle} isService={isService}>
             <Header 
             stationInfo={stationInfo}
             />
