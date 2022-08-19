@@ -1,6 +1,7 @@
 import Footer from './footer';
 import Header from './header'
 import { useRouter } from "next/router";
+import Head from 'next/head';
 
 const Layout = ({ children, stationInfo }) => {
 
@@ -30,6 +31,10 @@ const Layout = ({ children, stationInfo }) => {
     };    
 
     return (
+        <>
+        <Head>
+            <title>What Platform?</title>
+        </Head>
         <div className="Layout" style={layoutStyle} isService={isService}>
             <Header 
             stationInfo={stationInfo}
@@ -39,6 +44,7 @@ const Layout = ({ children, stationInfo }) => {
             </div>
             <Footer/>
         </div>
+        </>
     )
 
 }
