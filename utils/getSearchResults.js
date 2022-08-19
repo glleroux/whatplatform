@@ -41,7 +41,7 @@ const getRecentStations = () => {
         const crscode = stations.find(station => station.name === frequentStation.name).crscode
         return {...frequentStation, crscode} 
     })
-    return withCRS.sort((a,b) => b.count - a.count)
+    return withCRS.sort((a,b) => b.count - a.count).slice(0,5)
 }
 
 export {getSearchResults, getPopularStations, getRecentStations}

@@ -55,7 +55,6 @@ const getFromStorage = (key) => {
         if (!window.localStorage.key) {
             return null
         } else {
-            console.log(JSON.parse(window.localStorage.getItem(key)))
             return JSON.parse(window.localStorage.getItem(key))
         }
     }
