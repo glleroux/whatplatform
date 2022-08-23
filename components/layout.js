@@ -34,6 +34,12 @@ const Layout = ({ children, stationInfo }) => {
         <>
         <Head>
             <title>What Platform?</title>
+            <meta name="title" content="What Platform?"/>
+            <meta name="description" content="Find the departure platform of your train up to 30 minutes before it shows on the departure boards."/>
+            <meta name="keywords" content="train, platform, depart"/>
+            <meta name="robots" content="index, follow"/>
+            <meta httpEquiv="Content-Type" content="text/html; charset=utf-8"/>
+            <meta name="language" content="English"/>
         </Head>
         <div className="Layout" style={layoutStyle} isService={isService}>
             <Header 
