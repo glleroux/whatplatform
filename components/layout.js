@@ -44,6 +44,9 @@ const Layout = ({ children, stationInfo }) => {
             <meta property='twitter:title' content="What Platform?"/>
             <meta property='twitter:image' content='https://res.cloudinary.com/rtbckl/image/upload/v1661250811/What%20Platform/Frame_33_vflv7b.png'/>
             <meta name="twitter:card" content="summary_large_image"/>
+            <meta property="og:title" content="What Platform?"/>
+            <meta property="og:description" content="Find the departure platform of your train up to 30 minutes before it shows on the departure boards."/>
+            <meta property="og:url" content="https://www.whatplatform.co.uk/" />
         </Head>
         <div className="Layout" style={layoutStyle} isService={isService}>
             <Header 
