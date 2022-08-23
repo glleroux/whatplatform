@@ -41,6 +41,9 @@ const Layout = ({ children, stationInfo }) => {
             <meta httpEquiv="Content-Type" content="text/html; charset=utf-8"/>
             <meta name="language" content="English"/>
             <meta property='og:image' content='https://res.cloudinary.com/rtbckl/image/upload/v1661250811/What%20Platform/Frame_33_vflv7b.png'/>
+            <meta property='twitter:title' content="What Platform?"/>
+            <meta property='twitter:image' content='https://res.cloudinary.com/rtbckl/image/upload/v1661250811/What%20Platform/Frame_33_vflv7b.png'/>
+            <meta name="twitter:card" content="summary_large_image"/>
         </Head>
         <div className="Layout" style={layoutStyle} isService={isService}>
             <Header 
